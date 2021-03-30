@@ -1,26 +1,42 @@
 import React, { useState } from 'react'
 
 const DataTable = ({ data }) => {
-  const [ sortedData, setSortedData ] = useState([...data])
-	// const sortedData = [ ...data ]
+	const [ sortedData, setSortedData ] = useState([ ...data ])
+	const [ direction, setDirection ] = useState('asc')
 
 	function handleSort() {
-		data.sort((a, b) => {
-			if (a.scores.test1 < b.scores.test1) {
-				return -1
-			}
-			if (a.scores.test1 > b.scores.test1) {
-				return 1
-			}
-			return 0
-		})
+		let sorted = []
+		if (direction === 'asc') {
+      setDirection('desc')
+			sorted = data.sort((a, b) => {
+				if (a.scores.test1 < b.scores.test1) {
+					return -1
+				}
+				if (a.scores.test1 > b.scores.test1) {
+					return 1
+				}
+				return 0
+			})
+		} else {
+      setDirection('asc')
+      sorted = data.sort((a, b) => {
+				if (a.scores.test1 < b.scores.test1) {
+					return 1
+				}
+				if (a.scores.test1 > b.scores.test1) {
+					return -1
+				}
+				return 0
+			})
+    }
+		setSortedData(sorted)
 	}
 
 	function avg(scores) {
 		return Math.round(Object.values(scores).reduce((acc, cur) => acc + cur, 0) / 3)
 	}
 
-  // get an array of averages to map to each person
+	// get an array of averages to map to each person
 	// const avgArr = data.map(person => {
 	//   return avg(person.scores)
 	// })
@@ -33,7 +49,9 @@ const DataTable = ({ data }) => {
 					<tr>
 						<th>Student Name</th>
 						<th>Age</th>
-						<th onClick={handleSort}>Test 1</th>
+						<th onClick={handleSort}>
+							Test 1 <i class="fas fa-sort"></i>
+						</th>
 						{/* <th>Test 1</th> */}
 						<th>Test 2</th>
 						<th>Test 3</th>

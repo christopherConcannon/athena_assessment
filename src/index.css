@@ -34,8 +34,12 @@ th:last-child{
   border-radius:0 15px 0 0;
 }
 
-tbody tr:last-child{  
-  border-radius:0 15px 15px 0;
+tbody tr:last-child td:last-child{  
+  border-radius:0 0 15px 0;
+}
+
+tbody tr:last-child td:first-child{  
+  border-radius:0 0 0 15px;
 }
 
 th, td {
@@ -48,8 +52,28 @@ th {
   color: #ffffff;
 }
 
+th i {
+  cursor: pointer;
+}
+
 tbody tr:nth-child(even) {
   background-color: var(--light-blue);
+}
+
+/* tbody td:first-child {
+  border-left: 1px solid var(--dark-blue);
+}
+
+tbody td:last-child {
+  border-right: 1px solid var(--dark-blue);
+}
+
+tbody tr:last-child {
+  border-bottom: 1px solid var(--dark-blue);
+} */
+
+th i {
+  padding: 0;
 }
 
 
