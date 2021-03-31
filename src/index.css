@@ -3,6 +3,7 @@
   --blue:  #99bcdd;
   --light-blue: #e7f6ff;
   --grey: #cdcdcd;
+  --red: #c54242;
 }
 
 * {
@@ -77,6 +78,14 @@ th i:hover {
 
 tbody tr:nth-child(even) {
   background-color: var(--light-blue);
+}
+
+.error {
+  margin-top: 3rem;
+  text-align: center;
+  color: var(--red);
+  /* display: flex;
+  justify-content: center; */
 }
 
 
