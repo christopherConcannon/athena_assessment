@@ -56,7 +56,7 @@ function App() {
             // how many page links to show in the pagination group
             pageLimit={5}
             // how many posts per page
-            dataLimit={5}
+            dataLimit={10}
           />
 				{/* <DataTable data={searchNames(data)} /> */}
 				{error && (
