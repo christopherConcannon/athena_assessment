@@ -7,9 +7,9 @@ const DataTable = ({ data }) => {
   const rankedStudents = []
 
   // calculate test averages and add to data objects
-  data.map(person => {
-    person.avg = average(Object.values(person.scores))
-    rankedStudents.push(person)
+  data.map(student => {
+    student.avg = average(Object.values(student.scores))
+    rankedStudents.push(student)
   })
 
   // calculate rankings and add to student objects
