@@ -2,13 +2,11 @@ import React, { useState } from 'react'
 import { average } from '../utils/helpers'
 
 const DataTable = ({ data }) => {
-	const [ sortedData, setSortedData ] = useState([ ...data ])
-	const [ direction, setDirection ] = useState('asc')
+	const [ sortDirection, setSortDirection ] = useState(null)
 
   const rankedStudents = []
 
-  // calculate student averages and add to objects.  push updated objects to array for ranking
-  sortedData.map(person => {
+  data.map(person => {
     person.avg = average(Object.values(person.scores))
     rankedStudents.push(person)
   })
@@ -27,32 +25,23 @@ const DataTable = ({ data }) => {
   })
 
   // sort based on rankings
+  if (sortDirection !== null) {
+    data.sort((a, b) => {
+      if (a.standing < b.standing) {
+        return sortDirection === 'asc' ? -1 : 1
+      }
+      if (a.standing > b.standing) {
+        return sortDirection === 'asc' ?  1 : -1
+      }
+    })
+  }
+
 	function handleSort() {
-		let sorted = [...sortedData]
-		if (direction === 'asc') {
-			setDirection('desc')
-			sorted = data.sort((a, b) => {
-				if (a.standing < b.standing) {
-					return -1
-				}
-				if (a.standing > b.standing) {
-					return 1
-				}
-				return 0
-			})
-		} else {
-			setDirection('asc')
-			sorted = data.sort((a, b) => {
-				if (a.standing < b.standing) {
-					return 1
-				}
-				if (a.standing > b.standing) {
-					return -1
-				}
-				return 0
-			})
-		}
-		setSortedData(sorted)
+    let direction = 'asc'
+    if (sortDirection === 'asc') {
+      direction = 'desc'
+    }
+    setSortDirection(direction)
 	}
 
 	return (
@@ -70,7 +59,7 @@ const DataTable = ({ data }) => {
 					</tr>
 				</thead>
 				<tbody>
-					{sortedData.map((person, idx) => (
+					{data.map((person, idx) => (
 						<tr key={idx}>
 							<td>{`${person.lastName}, ${person.firstName}`}</td>
 							<td>{person.age}</td>
