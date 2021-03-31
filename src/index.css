@@ -29,6 +29,13 @@ body {
 .Search input {
   margin: 3rem 0;
   padding: .5rem;
+  border-radius: 10px;
+  outline: none;
+  background-color: var(--grey);
+}
+
+.Search input:focus {
+  background-color: #fff;
 }
 
 /* DATATABLE */
@@ -51,19 +58,19 @@ table::after {
 }
 
 th:first-child { 
-  border-radius:15px 0 0 0;
+  border-radius:10px 0 0 0;
 }
 
 th:last-child{ 
-  border-radius:0 15px 0 0;
+  border-radius:0 10px 0 0;
 }
 
 tbody tr:last-child td:last-child{  
-  border-radius:0 0 15px 0;
+  border-radius:0 0 10px 0;
 }
 
 tbody tr:last-child td:first-child{  
-  border-radius:0 0 0 15px;
+  border-radius:0 0 0 10px;
 }
 /* end rounded corners */
 
