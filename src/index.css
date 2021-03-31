@@ -3,6 +3,7 @@
   --blue:  #99bcdd;
   --light-blue: #e7f6ff;
   --grey: #cdcdcd;
+  --light-grey: #e4e1e1;
   --red: #c54242;
 }
 
@@ -31,7 +32,7 @@ body {
   padding: .5rem;
   border-radius: 10px;
   outline: none;
-  background-color: var(--grey);
+  background-color: var(--light-grey);
 }
 
 .Search input:focus {
