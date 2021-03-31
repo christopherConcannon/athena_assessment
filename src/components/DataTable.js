@@ -5,14 +5,15 @@ const DataTable = ({ data }) => {
 	const [ sortedData, setSortedData ] = useState([ ...data ])
 	const [ direction, setDirection ] = useState('asc')
 
-
   const rankedStudents = []
 
+  // calculate student averages and add to objects.  push updated objects to array for ranking
   sortedData.map(person => {
     person.avg = average(Object.values(person.scores))
     rankedStudents.push(person)
   })
 
+  // calculate rankings and add to student objects
   rankedStudents.sort((a, b) => {
     if (a.avg < b.avg) {
       return -1
@@ -25,6 +26,7 @@ const DataTable = ({ data }) => {
     student.standing = idx + 1 
   })
 
+  // sort based on rankings
 	function handleSort() {
 		let sorted = [...sortedData]
 		if (direction === 'asc') {
