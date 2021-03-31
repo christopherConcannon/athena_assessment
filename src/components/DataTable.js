@@ -5,15 +5,35 @@ const DataTable = ({ data }) => {
 	const [ sortedData, setSortedData ] = useState([ ...data ])
 	const [ direction, setDirection ] = useState('asc')
 
+
+  const rankedStudents = []
+
+  sortedData.map(person => {
+    person.avg = average(Object.values(person.scores))
+    rankedStudents.push(person)
+  })
+
+  rankedStudents.sort((a, b) => {
+    if (a.avg < b.avg) {
+      return -1
+    }
+    if (a.avg > b.avg) {
+      return 1
+    }
+    return 0
+  }).reverse().forEach((student, idx) => {
+    student.standing = idx + 1 
+  })
+
 	function handleSort() {
-		let sorted = []
+		let sorted = [...sortedData]
 		if (direction === 'asc') {
 			setDirection('desc')
 			sorted = data.sort((a, b) => {
-				if (a.scores.test1 < b.scores.test1) {
+				if (a.standing < b.standing) {
 					return -1
 				}
-				if (a.scores.test1 > b.scores.test1) {
+				if (a.standing > b.standing) {
 					return 1
 				}
 				return 0
@@ -21,10 +41,10 @@ const DataTable = ({ data }) => {
 		} else {
 			setDirection('asc')
 			sorted = data.sort((a, b) => {
-				if (a.scores.test1 < b.scores.test1) {
+				if (a.standing < b.standing) {
 					return 1
 				}
-				if (a.scores.test1 > b.scores.test1) {
+				if (a.standing > b.standing) {
 					return -1
 				}
 				return 0
@@ -33,16 +53,6 @@ const DataTable = ({ data }) => {
 		setSortedData(sorted)
 	}
 
-	// function avg(scores) {
-	// 	return Math.round(Object.values(scores).reduce((acc, cur) => acc + cur, 0) / 3)
-	// }
-
-	// get an array of averages to map to each person
-	// const avgArr = data.map(person => {
-	//   return avg(person.scores)
-	// })
-	// console.log(avgArr);
-
 	return (
 		<div className='container'>
 			<table>
@@ -50,28 +60,23 @@ const DataTable = ({ data }) => {
 					<tr>
 						<th>Student Name</th>
 						<th>Age</th>
-						<th onClick={handleSort}>
-							Test 1 <i class='fas fa-sort' />
-						</th>
-						{/* <th>Test 1</th> */}
+						<th>Test 1</th>
 						<th>Test 2</th>
 						<th>Test 3</th>
 						<th>Avg</th>
-						<th>Standing</th>
+						<th className='sorter' onClick={handleSort}>Standing <i className='fas fa-sort' /></th>
 					</tr>
 				</thead>
 				<tbody>
-					{/* {data.map((item) => ( */}
-					{sortedData.map((item, idx) => (
+					{sortedData.map((person, idx) => (
 						<tr key={idx}>
-							<td>{`${item.lastName}, ${item.firstName}`}</td>
-							<td>{item.age}</td>
-							<td>{item.scores.test1}</td>
-							<td>{item.scores.test2}</td>
-							<td>{item.scores.test3}</td>
-							{/* <td>{avg(item.scores)}</td> */}
-							<td>{average(Object.values(item.scores))}</td>
-							<td />
+							<td>{`${person.lastName}, ${person.firstName}`}</td>
+							<td>{person.age}</td>
+							<td>{person.scores.test1}</td>
+							<td>{person.scores.test2}</td>
+							<td>{person.scores.test3}</td>
+							<td>{Math.round(person.avg)}</td>
+							<td>{person.standing}</td>
 						</tr>
 					))}
 				</tbody>
