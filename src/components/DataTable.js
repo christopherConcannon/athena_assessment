@@ -6,6 +6,7 @@ const DataTable = ({ data }) => {
 
   const rankedStudents = []
 
+  // calculate test averages and add to data objects
   data.map(person => {
     person.avg = average(Object.values(person.scores))
     rankedStudents.push(person)
@@ -24,7 +25,7 @@ const DataTable = ({ data }) => {
     student.standing = idx + 1 
   })
 
-  // sort based on rankings
+  // if sort button is clicked sort based on rankings and sort direction
   if (sortDirection !== null) {
     data.sort((a, b) => {
       if (a.standing < b.standing) {
