@@ -7,7 +7,7 @@ const DataTable = ({ data }) => {
   const rankedStudents = []
 
   // calculate test averages and add to data objects
-  data.map(student => {
+  data.forEach(student => {
     student.avg = average(Object.values(student.scores))
     rankedStudents.push(student)
   })
@@ -60,15 +60,15 @@ const DataTable = ({ data }) => {
 					</tr>
 				</thead>
 				<tbody>
-					{data.map((person, idx) => (
+					{data.map((student, idx) => (
 						<tr key={idx}>
-							<td>{`${person.lastName}, ${person.firstName}`}</td>
-							<td>{person.age}</td>
-							<td>{person.scores.test1}</td>
-							<td>{person.scores.test2}</td>
-							<td>{person.scores.test3}</td>
-							<td>{Math.round(person.avg)}</td>
-							<td>{person.standing}</td>
+							<td>{`${student.lastName}, ${student.firstName}`}</td>
+							<td>{student.age}</td>
+							<td>{student.scores.test1}</td>
+							<td>{student.scores.test2}</td>
+							<td>{student.scores.test3}</td>
+							<td>{Math.round(student.avg)}</td>
+							<td>{student.standing}</td>
 						</tr>
 					))}
 				</tbody>
