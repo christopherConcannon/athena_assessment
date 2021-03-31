@@ -1,5 +1,6 @@
 :root {
   --dark-blue: #1f405f;
+  --blue:  #99bcdd;
   --light-blue: #e7f6ff;
   --grey: #cdcdcd;
 }
@@ -70,8 +71,8 @@ th i {
   padding: 0;
 }
 
-.sorter {
-  z-index: 10;
+th i:hover {
+  color: var(--blue);
 }
 
 tbody tr:nth-child(even) {
