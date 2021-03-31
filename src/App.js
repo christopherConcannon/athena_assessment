@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react'
 
+import Search from './components/Search'
 import DataTable from './components/DataTable'
 // import data from './data'
 
 function App() {
 	const [ data, setData ] = useState([])
 	const [ loading, setLoading ] = useState(true)
-  const [ error, setError ] = useState(false)
+	const [ error, setError ] = useState(false)
 
 	useEffect(() => {
 		const API_URL = 'http://localhost:3001/students'
@@ -20,13 +21,15 @@ function App() {
 				setData(json)
 				setLoading(false)
 			} catch (err) {
-        setError(true)
-        setLoading(false)
+				setError(true)
+				setLoading(false)
 				console.log(err)
 			}
 		}
 		loadData()
 	}, [])
+
+	const search = (rows) => {}
 
 	if (loading) {
 		return <h2>Loading...</h2>
@@ -34,12 +37,13 @@ function App() {
 
 	return (
 		<div className='App'>
-			<DataTable data={data} />
-      {error && (
-        <div className="error">
-          Sorry, there was a problem loading your data
-        </div>
-      )}
+			<div className='container'>
+				<Search data={data} />
+				<DataTable data={data} />
+				{error && (
+					<div className='error'>Sorry, there was a problem loading your data</div>
+				)}
+			</div>
 		</div>
 	)
 }

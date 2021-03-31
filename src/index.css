@@ -16,14 +16,24 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-.container {
+.App {
   display: flex;
   justify-content: center;
-  padding-top: 4rem;
 }
 
-table {
+.container {
   width: 80%;
+}
+
+/* SEARCH */
+.Search input {
+  margin: 3rem 0;
+  padding: .5rem;
+}
+
+/* DATATABLE */
+table {
+  width: 100%;
   border-collapse: collapse;
   position: relative;
 }
@@ -76,6 +86,10 @@ th i:hover {
   color: var(--blue);
 }
 
+tbody tr:not(:last-child) {
+  border-bottom: 2px solid var(--grey);
+}
+
 tbody tr:nth-child(even) {
   background-color: var(--light-blue);
 }
@@ -84,8 +98,6 @@ tbody tr:nth-child(even) {
   margin-top: 3rem;
   text-align: center;
   color: var(--red);
-  /* display: flex;
-  justify-content: center; */
 }
 
 

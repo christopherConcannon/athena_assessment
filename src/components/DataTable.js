@@ -47,7 +47,7 @@ const DataTable = ({ data }) => {
 	}
 
 	return (
-		<div className='container'>
+		<div className='DataTaable'>
 			<table>
 				<thead>
 					<tr>
