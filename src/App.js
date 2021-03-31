@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react'
 
 import Search from './components/Search'
+import Pagination from './components/Pagination'
 import DataTable from './components/DataTable'
+
 
 function App() {
 	const [ data, setData ] = useState([])
@@ -48,7 +50,15 @@ function App() {
 		<div className='App'>
 			<div className='container'>
 				<Search query={query} setQuery={setQuery}/>
-				<DataTable data={searchNames(data)} />
+        <Pagination 
+            data={searchNames(data)}
+            RenderComponent={DataTable}
+            // how many page links to show in the pagination group
+            pageLimit={5}
+            // how many posts per page
+            dataLimit={5}
+          />
+				{/* <DataTable data={searchNames(data)} /> */}
 				{error && (
 					<div className='error'>Sorry, there was a problem loading your data</div>
 				)}
