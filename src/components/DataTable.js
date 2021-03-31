@@ -34,6 +34,7 @@ const DataTable = ({ data }) => {
       if (a.standing > b.standing) {
         return sortDirection === 'asc' ?  1 : -1
       }
+      return 0
     })
   }
 
