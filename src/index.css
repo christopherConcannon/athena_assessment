@@ -75,6 +75,10 @@ th i:hover {
   color: var(--blue);
 }
 
+tbody tr:not(:last-child) {
+  border-bottom: 2px solid var(--grey);
+}
+
 tbody tr:nth-child(even) {
   background-color: var(--light-blue);
 }
