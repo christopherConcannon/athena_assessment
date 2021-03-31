@@ -3,12 +3,12 @@ import { average } from '../utils/helpers'
 
 const DataTable = ({ data }) => {
 	const [ sortedData, setSortedData ] = useState([ ...data ])
-	const [ direction, setDirection ] = useState('asc')
+	const [ direction, setDirection ] = useState(null)
 
 
   const rankedStudents = []
 
-  sortedData.map(person => {
+  data.map(person => {
     person.avg = average(Object.values(person.scores))
     rankedStudents.push(person)
   })
