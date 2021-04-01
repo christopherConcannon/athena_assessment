@@ -3,6 +3,7 @@
   --blue:  #99bcdd;
   --light-blue: #e7f6ff;
   --grey: #cdcdcd;
+  --light-grey: #f7f5f5;
 }
 
 * {
@@ -18,13 +19,14 @@ body {
 .container {
   display: flex;
   justify-content: center;
-  padding-top: 4rem;
 }
 
 table {
-  width: 80%;
+  width: 1200px;
   border-collapse: collapse;
   position: relative;
+  margin: 0 auto;
+  margin-top: 4rem;
 }
 
 /* rounded corners */
@@ -81,6 +83,57 @@ tbody tr:not(:last-child) {
 
 tbody tr:nth-child(even) {
   background-color: var(--light-blue);
+}
+
+/* PAGINATION */
+.pagination {
+  margin-top: 1rem;
+}
+
+.pagination-item {
+  height: 30px;
+  width: 30px;
+  margin: 0 5px;
+  background-color: #fff;
+  border: 1px solid var(--blue);
+  border-radius: 5px;
+  color: var(--blue);
+  cursor: pointer;
+  outline: none;
+}
+
+.pagination-item.active {
+  border-color: var(--light-blue);
+  color: var(--grey);
+  pointer-events: none;
+}
+
+.prev, .next {
+  height: 30px;
+  padding: 0 7px;
+  background-color: #fff;
+  color: var(--blue);
+  border: none;
+  box-shadow: 0px 0px 3px 0px var(--dark-blue);
+  -webkit-box-shadow: 0px 0px 3px 0px var(--dark-blue);
+  -moz-box-shadow: 0px 0px 3px 0px var(--dark-blue);
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 0 10px;
+  outline: none;
+}
+
+/* .prev:hover, .next:hover {
+  
+  box-shadow: 0px 0px 5px 0px var(--dark-blue);
+  -webkit-box-shadow: 0px 0px 5px 0px var(--dark-blue);
+  -moz-box-shadow: 0px 0px 5px 0px var(--dark-blue);
+} */
+
+.disabled {
+  box-shadow: none;
+  color: var(--grey);
+  pointer-events: none;
 }
 
 
