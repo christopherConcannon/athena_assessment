@@ -3,6 +3,8 @@
   --blue:  #99bcdd;
   --light-blue: #e7f6ff;
   --grey: #cdcdcd;
+  --light-grey: #f7f2f2;
+  --red: #c54242;
 }
 
 * {
@@ -15,14 +17,74 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-.container {
+.App {
   display: flex;
   justify-content: center;
   padding: 6rem 0;
 }
 
-table {
+.container {
   width: 80%;
+}
+
+/* SEARCH */
+.Search input {
+  margin: 3rem 0;
+  padding: .5rem;
+  border-radius: 5px;
+  outline: none;
+  background-color: var(--light-grey);
+}
+
+.Search input:focus {
+  background-color: #fff;
+}
+
+/* PAGINATION */
+.pagination {
+  margin-top: 1rem;
+}
+.paginationItem {
+  background: #fff;
+  border: 2px solid var(--light-blue);
+  border-radius: 5px;
+  height: 32px;
+  width: 32px;
+  position: relative;
+  margin: 0 5px;
+  cursor: pointer;
+
+}
+
+.paginationItem.active {
+  border: 1px solid var(--grey);
+  color: var(--grey);
+  pointer-events: none;
+}
+
+.prev,
+.next {
+  background: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: .5rem;
+  color: var(--dark-blue);
+  box-shadow: 0 0 3px var(--dark-blue);
+  margin: 0 5px;
+  cursor: pointer;
+}
+
+.prev.disabled,
+.next.disabled {
+  pointer-events: none;
+  box-shadow: none;
+  color: #999;
+}
+
+
+/* DATATABLE */
+table {
+  width: 100%;
   border-collapse: collapse;
   position: relative;
 }
@@ -81,6 +143,12 @@ tbody tr:not(:last-child) {
 
 tbody tr:nth-child(even) {
   background-color: var(--light-blue);
+}
+
+.error {
+  margin-top: 3rem;
+  text-align: center;
+  color: var(--red);
 }
 
 
