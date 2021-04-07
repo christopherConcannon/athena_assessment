@@ -4,7 +4,10 @@ import { average } from '../utils/helpers'
 const DataTable = ({ data }) => {
 	const [ sortDirection, setSortDirection ] = useState(null)
 
-	data
+
+  const students = [...data]
+
+	students
 		.map((student) => {
 			student.avg = average(Object.values(student.scores))
 			return student
@@ -13,7 +16,7 @@ const DataTable = ({ data }) => {
 		.forEach((student, idx) => (student.standing = idx + 1))
 
 	if (sortDirection !== null) {
-		data.sort((a, b) => {
+		students.sort((a, b) => {
 			if (a.standing < b.standing) {
         return sortDirection === 'ascending' ? -1 : 1
       }
@@ -47,7 +50,7 @@ const DataTable = ({ data }) => {
 					</tr>
 				</thead>
 				<tbody>
-					{data.map((student, idx) => (
+					{students.map((student, idx) => (
 						<tr key={idx}>
 							<td>{`${student.lastName}, ${student.firstName}`}</td>
 							<td>{student.age}</td>
