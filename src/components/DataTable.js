@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { average } from '../utils/helpers'
 
-const DataTable = ({ data, getPaginatedData }) => {
+const DataTable = ({ data }) => {
 	const [ sortDirection, setSortDirection ] = useState(null)
 
   const rankedStudents = []
@@ -61,7 +61,7 @@ const DataTable = ({ data, getPaginatedData }) => {
 					</tr>
 				</thead>
 				<tbody>
-					{getPaginatedData().map((student, idx) => (
+					{data.map((student, idx) => (
 						<tr key={idx}>
 							<td>{`${student.lastName}, ${student.firstName}`}</td>
 							<td>{student.age}</td>
