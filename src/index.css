@@ -20,7 +20,7 @@ body {
 .App {
   display: flex;
   justify-content: center;
-  padding-bottom: 4rem;
+  padding: 6rem 0;
 }
 
 .container {
