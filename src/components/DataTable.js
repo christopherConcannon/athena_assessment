@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { average } from '../utils/helpers'
 
-const DataTable = ({ data }) => {
+const DataTable = ({ data, ageSortDirection, setAgeSortDirection }) => {
 	const [ sortDirection, setSortDirection ] = useState(null)
 
 
@@ -27,6 +27,12 @@ const DataTable = ({ data }) => {
 		})
 	}
 
+  const handleAgeSort = () => {
+    let direction = 'asc'
+    if (ageSortDirection === 'asc') direction = 'desc'
+    setAgeSortDirection(direction)
+  }
+
 	const handleSort = () => {
     let direction = 'ascending'
     if (sortDirection === 'ascending') direction = 'descending'
@@ -39,7 +45,7 @@ const DataTable = ({ data }) => {
 				<thead>
 					<tr>
 						<th>Student Name</th>
-						<th>Age</th>
+						<th onClick={handleAgeSort}>Age <i className='fas fa-sort' /></th>
 						<th>Test 1</th>
 						<th>Test 2</th>
 						<th>Test 3</th>

@@ -83,6 +83,10 @@ body {
 
 
 /* DATATABLE */
+.DataTable {
+  min-height: 80vh;
+}
+
 table {
   width: 100%;
   border-collapse: collapse;
