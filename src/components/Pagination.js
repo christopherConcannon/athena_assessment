@@ -6,11 +6,10 @@ const Pagination = ({
 	RenderComponent,
 	pageLimit,
 	dataLimit,
-	// setPage,
+	setPage,
 	ageSortDirection,
 	setAgeSortDirection,
-  apiConfig,
-  setApiUrl
+  pageConfig
 }) => {
 	const {
 		currentPage,
@@ -18,10 +17,9 @@ const Pagination = ({
 		goToNextPage,
 		changePage,
 		getPaginationGroup
-	} = usePagination(pageLimit, apiConfig, setApiUrl)
-	// } = usePagination(pageLimit, setPage, apiConfig, setApiUrl)
+	} = usePagination(pageLimit, setPage, pageConfig)
 
-	const pages = Math.ceil(apiConfig?.dataCount / dataLimit)
+	const pages = Math.ceil(pageConfig?.dataCount / dataLimit)
 
 	return (
 		<React.Fragment>

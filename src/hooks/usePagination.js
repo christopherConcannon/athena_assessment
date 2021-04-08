@@ -1,23 +1,19 @@
 import { useState } from 'react'
 
-// const usePagination = (pageLimit, setPage, pageConfig, setApiUrl) => {
-const usePagination = (pageLimit, pageConfig, setApiUrl) => {
+const usePagination = (pageLimit, setPage, pageConfig) => {
 	const [ currentPage, setCurrentPage ] = useState(1)
 
 	const goToPrevPage = () => {
 			setCurrentPage((prev) => prev - 1)
-			// setPage((prev) => prev - 1)
-      setApiUrl(pageConfig.prev)
+			setPage((prev) => prev - 1)
 	}
 	const goToNextPage = () => {
 			setCurrentPage((prev) => prev + 1)
-			// setPage((prev) => prev + 1)
-      setApiUrl(pageConfig.next)
+			setPage((prev) => prev + 1)
 	}
 	const changePage = (e) => {
     setCurrentPage(+e.target.innerText)
-    // setPage(+e.target.innerText)
-    setApiUrl(`http://localhost:3001/students?_page=${+e.target.innerText}&q=&_sort=null&_order=null`)
+    setPage(+e.target.innerText)
   }
 
 	const getPaginationGroup = () => {
