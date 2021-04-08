@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import useDebounced from './hooks/useDebounced'
 
 import Search from './components/Search'
 import Pagination from './components/Pagination'
@@ -10,13 +11,15 @@ function App() {
   const [ query, setQuery ] = useState('')
   const [ ageSortDirection, setAgeSortDirection] = useState(null)
   const [ dataCount, setDataCount] = useState(null)
+  const debounced = useDebounced(query)
 
   const BASE_URL = 'http://localhost:3001'
   
 
   useEffect(() => {
     // const API_URL = `${BASE_URL}/students?_page=${page}`
-    const API_URL = `${BASE_URL}/students?_page=${page}&q=${query}&_sort=${ageSortDirection && 'age'}&_order=${ageSortDirection}`
+    // const API_URL = `${BASE_URL}/students?_page=${page}&q=${query}&_sort=${ageSortDirection && 'age'}&_order=${ageSortDirection}`
+    const API_URL = `${BASE_URL}/students?_page=${page}&q=${debounced}&_sort=${ageSortDirection && 'age'}&_order=${ageSortDirection}`
     const loadData = async () => {
       try {
         const res = await fetch(API_URL)
@@ -30,7 +33,8 @@ function App() {
       } 
     }
     loadData()
-  }, [page, query, ageSortDirection])
+  // }, [page, query, ageSortDirection])
+  }, [page, debounced, ageSortDirection])
 
   // console.log(data);
 
