@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-const usePagination = (pageLimit, setPage, pageConfig) => {
+const usePagination = (pageLimit, setPage) => {
 	const [ currentPage, setCurrentPage ] = useState(1)
 
 	const goToPrevPage = () => {

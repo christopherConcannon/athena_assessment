@@ -9,9 +9,10 @@ function App() {
   const [ page, setPage ] = useState(1)
   const [ query, setQuery ] = useState('')
   const [ ageSortDirection, setAgeSortDirection] = useState(null)
+  const [ dataCount, setDataCount] = useState(null)
 
   const BASE_URL = 'http://localhost:3001'
-  let dataCount 
+  
 
   useEffect(() => {
     // const API_URL = `${BASE_URL}/students?_page=${page}`
@@ -21,9 +22,8 @@ function App() {
         const res = await fetch(API_URL)
         if (!res.ok) throw new Error('could not fetch data')
 
-        dataCount = res.headers.get('X-Total-Count')
+        setDataCount(+res.headers.get('X-Total-Count'))
         const json = await res.json()
-        console.log(json)
         setData(json)
       } catch (err) {
         console.log(err);
@@ -42,6 +42,7 @@ function App() {
           data={data}
           RenderComponent={DataTable}
           dataCount={dataCount}
+          // dataCount={100}
           dataLimit={10}
           pageLimit={5}
           setPage={setPage}
